@@ -1,0 +1,77 @@
+body {
+    height: 100vh;
+    background-color: rgb(211, 210, 210);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#appborder,
+#display,
+#displayscreen,
+#buttonarea,
+.digit-buttons,
+.function-buttons {
+    border-radius: 10px ;
+}
+#container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#appborder {
+    display: flex;
+    background-color: rgb(29, 29, 31);
+    flex-direction: column;
+}
+
+#display {
+    background-color: rgb(53, 51, 49);
+    width: 325px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#displayscreen {
+    background-color: wheat;
+    height: 70px;
+    width: 300px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+#displaytext {
+    margin: 10px;
+}
+#buttonarea {
+    background-color: rgb(29, 29, 31);
+    width: 325px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.digit-buttons {
+    width: 70px;
+    height: 70px;
+    background-color: rgb(5, 155, 147);
+}
+
+.function-buttons {
+    background-color: rgb(199, 91, 2);
+    width: 70px;
+    height: 70px;
+}
+
+#equalbutton {
+    background-color: rgb(199, 91, 2);
+    width: 144px;
+    height: 70px;
+}
