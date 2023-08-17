@@ -6,7 +6,6 @@ let previousOperation = '';
 let calculationHistory = [];
 let historyWindowOpen = false;
 
-
 const add = (a, b) => a + b;
 const subtract = (a, b) => a - b;
 const multiply = (a, b) => a * b;
@@ -33,10 +32,10 @@ function operate(operator, number1, number2) {
         calculationString = `${number1} / ${number2} = ${result}`;
     }
 
+    result = parseFloat(result.toFixed(8)); // Round to 6 decimal places
     calculationHistory.push(calculationString); // Store the calculation
     return result;
 }
-
 
 const clear = document.getElementById("clear") 
 clear.addEventListener("click", function() { // Clear the display text when the AC button is clicked
@@ -45,7 +44,7 @@ clear.addEventListener("click", function() { // Clear the display text when the 
     operator = null;
     displayValue = "0";
     document.getElementById("displaytext").textContent = "0";
-    document.getElementById("upperdisplaytext").textContent = "";
+    document.getElementById("upperdisplaytext").textContent = "0";
 })
 
 const deleteButton = document.getElementById("delete");
@@ -57,7 +56,6 @@ deleteButton.addEventListener("click", function() {
     }
     document.getElementById("displaytext").textContent = displayValue;
 });
-
 
 document.querySelectorAll(".digits").forEach(button => { // Change the display text when a button is clicked
     button.addEventListener("click", function() {
@@ -72,8 +70,6 @@ document.querySelectorAll(".digits").forEach(button => { // Change the display t
         document.getElementById("displaytext").textContent = displayValue;
     });
 });
-
-
 
 document.querySelectorAll(".operators").forEach(operatorButton => {
     operatorButton.addEventListener("click", function() {
@@ -91,7 +87,6 @@ document.querySelectorAll(".operators").forEach(operatorButton => {
         previousOperation = firstnumber + " " + operator;
     });
 });
-
 
 const equalButton = document.getElementById("equalbutton");
 equalButton.addEventListener("click", function() {
@@ -116,7 +111,7 @@ function openHistoryWindow() {
     const historyModal = document.getElementById("historyModal");
     const historyContent = document.getElementById("historyContent");
 
-    historyContent.innerHTML = ""; // Clear the content before populating
+    historyContent.innerHTML = "";
 
     for (const calculation of calculationHistory) {
         historyContent.innerHTML += `<p>${calculation}</p>`;
@@ -134,8 +129,17 @@ window.addEventListener('beforeunload', function() {
     historyWindowOpen = false;
 });
 
-
 const historyButton = document.getElementById("history");
 historyButton.addEventListener("click", openHistoryWindow);
 
-
+const toggleSignButton = document.getElementById("togglesign"); // Toggle for Negative/Positive numbers
+toggleSignButton.addEventListener("click", function() {
+    if (displayValue !== "0") {
+        if (displayValue.startsWith("-")) {
+            displayValue = displayValue.substring(1);
+        } else {
+            displayValue = "-" + displayValue;
+        }
+        document.getElementById("displaytext").textContent = displayValue;
+    }
+});

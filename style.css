@@ -1,21 +1,58 @@
+* {
+    font-family: 'Pacifico', cursive;
+}
 body {
     height: 100vh;
-    background-color: rgb(211, 210, 210);
+    background-color: rgb(34, 32, 32);
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
-#appborder,
 #display,
-#displayscreen,
-#buttonarea,
-.digit-buttons,
-.function-buttons {
-    border-radius: 10px ;
+#appborder,
+#buttonarea {
+    border-radius: 30px;
 }
+
+.operators2,
+.digits,
+.operators {
+    color: wheat;
+    border-radius: 20px;
+    box-shadow: 3px 3px 10px rgb(0, 0, 0);
+    width: 70px;
+    height: 75px;
+    margin: 5px;
+    background-color: rgb(36, 36, 39);
+    border: none;
+    font-size: 23px;
+}
+
+.operators2:hover,
+.digits:hover,
+.operators:hover {
+            box-shadow: 0 0 10px wheat;
+        }
+
+#divide,
+#multiply,
+#add,
+#subtract,
+#equalbutton {
+    background-color: rgb(153, 6, 6);
+    color: black;
+}
+
+.operators2:active,
+.digits:active,
+.operators:active {
+    transform: translateY(6px);
+}
+
 #container {
     display: flex;
     justify-content: center;
@@ -24,66 +61,54 @@ body {
 
 #appborder {
     display: flex;
-    background-color: rgb(29, 29, 31);
+    background-color: rgb(22, 22, 24);
     flex-direction: column;
+    align-items: center;
+    box-shadow: 20px 20px 40px rgb(0, 0, 0);
 }
 
 #display {
-    background-color: rgb(53, 51, 49);
+    background-color: rgb(22, 22, 24);
     width: 325px;
-    height: 100px;
+    height: 225px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 #displayscreen {
-    background-color: wheat;
-    height: 70px;
-    width: 300px;
+    margin-top: 15px;
+    background-color: rgb(50, 50, 54);
+    height: 150px;
+    width: 400px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: space-around;
+    border-radius: 15px ;
     align-items: flex-end;
 }
+
 #displaytext {
     font-size: 35px;
-    margin-right: 5px;
+    margin: 10px;
+    color: wheat;
 }
+
 #upperdisplaytext {
     font-size: 25px;
-    margin-right: 5px;
+    margin-right: 10px;
+    color: wheat;
 }
+
 #buttonarea {
-    background-color: rgb(29, 29, 31);
-    width: 325px;
-    height: 400px;
+    background-color: rgb(22, 22, 24);
+    width: 400px;
+    height: 475px;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     flex-direction: column;
 }
-
-.digits {
-    width: 70px;
-    height: 70px;
-    background-color: rgb(5, 155, 147);
-}
-
-.operators,
-.operators2 {
-    background-color: rgb(199, 91, 2);
-    width: 70px;
-    height: 70px;
-}
-
-#equalbutton {
-    background-color: rgb(199, 91, 2);
-    width: 144px;
-    height: 70px;
-}
-
-/* ... (other CSS code) ... */
 
 .modal {
     display: none;
@@ -97,21 +122,30 @@ body {
 }
 
 .modal-content {
+    font-size: 25px;
     color: wheat;
     text-align: center;
     border-radius: 20px;
-    background-color: rgb(22, 21, 21);
+    background-color: rgb(25, 25, 27);
     margin: 15% auto;
     padding: 20px;
-    border: 1px solid #888;
+    border: 1px solid #000000;
     width: 20%;
 }
 
 .close {
-    color: wheat;
+    color: rgb(153, 6, 6);
     float: right;
-    font-size: 28px;
+    font-size: 40px;
     font-weight: bold;
 }
 
-/* ... (other CSS code) ... */
+#history {
+    font-size: 17px;
+}
+
+#footer {
+    margin-top: 50px;
+    font-size: 35px;
+    color: wheat;
+}

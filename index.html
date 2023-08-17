@@ -6,28 +6,31 @@
     <title>Calculator</title>
     <script src="script.js" defer></script>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 </head>
 <body>
     <div id="container">
         <div id="appborder">
             <div id="display">
                 <div id="displayscreen">
-                    <div id="upperdisplaytext"></div>
+                    <div id="upperdisplaytext">0</div>
                     <div id="displaytext">0</div>
                 </div>
             </div>
             <div id="buttonarea">
                 <div id="row1">
-                    <button class="operators2" id="history">history</button>
+                    <button class="operators2" id="history">History</button>
                     <button class="operators2" id="clear">AC</button>
-                    <button class="operators2" id="delete">DEL  </button>
+                    <button class="operators2" id="delete">CE</button>
                     <button class="operators" id="divide">/</button>
                 </div>
                 <div id="row2">
                     <button class="digits" id="7">7</button>
                     <button class="digits" id="8">8</button>
                     <button class="digits" id="9">9</button>
-                    <button class="operators" id="multiply">x</button>
+                    <button class="operators" id="multiply">X</button>
                 </div>
                 <div id="row3">
                     <button class="digits" id="4">4</button>
@@ -44,24 +47,22 @@
                 <div id="row5">
                     <button class="digits" id="decimal">.</button>
                     <button class="digits" id="0">0</button>
-                    <button id="equalbutton" id="equal">=</button>
+                    <button class="operators2" id="togglesign">+/-</button>
+                    <button class="operators2" id="equalbutton" id="equal">=</button>
                 </div>
             </div>
         </div>
     </div>
-    <!-- ... (other HTML code) ... -->
+    <div id="footer">TOP Assignment by voidnokata</div>
 
 <div id="historyModal" class="modal">
     <div class="modal-content">
         <span class="close">&times;</span>
         <h2>Calculation History</h2>
         <div id="historyContent">
-            <!-- Calculation history will be displayed here -->
         </div>
     </div>
 </div>
-
-<!-- ... (other HTML code) ... -->
 
 </body>
 </html>
