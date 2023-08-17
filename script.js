@@ -143,3 +143,15 @@ toggleSignButton.addEventListener("click", function() {
         document.getElementById("displaytext").textContent = displayValue;
     }
 });
+
+document.addEventListener("DOMContentLoaded", function() { // Button sounds
+    const buttons = document.querySelectorAll("button");
+    const buttonSound = document.getElementById("buttonSound");
+
+    buttons.forEach(button => {
+        button.addEventListener("click", function() {
+            buttonSound.currentTime = 0;
+            buttonSound.play();
+        });
+    });
+});
