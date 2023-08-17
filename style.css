@@ -42,11 +42,17 @@ body {
     height: 70px;
     width: 300px;
     display: flex;
+    flex-direction: column;
     justify-content: flex-end;
     align-items: flex-end;
 }
 #displaytext {
-    margin: 10px;
+    font-size: 35px;
+    margin-right: 5px;
+}
+#upperdisplaytext {
+    font-size: 25px;
+    margin-right: 5px;
 }
 #buttonarea {
     background-color: rgb(29, 29, 31);
@@ -58,13 +64,14 @@ body {
     flex-direction: column;
 }
 
-.digit-buttons {
+.digits {
     width: 70px;
     height: 70px;
     background-color: rgb(5, 155, 147);
 }
 
-.function-buttons {
+.operators,
+.operators2 {
     background-color: rgb(199, 91, 2);
     width: 70px;
     height: 70px;
