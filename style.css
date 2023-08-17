@@ -82,3 +82,36 @@ body {
     width: 144px;
     height: 70px;
 }
+
+/* ... (other CSS code) ... */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+    color: wheat;
+    text-align: center;
+    border-radius: 20px;
+    background-color: rgb(22, 21, 21);
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 20%;
+}
+
+.close {
+    color: wheat;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+/* ... (other CSS code) ... */

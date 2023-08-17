@@ -113,21 +113,22 @@ equalButton.addEventListener("click", function() {
 });
 
 function openHistoryWindow() {
-    if (!historyWindowOpen) {
-        historyWindowOpen = true;
-        const historyWindow = window.open('', 'Calculation History', 'width=400,height=300,scrollbars=yes');
-        historyWindow.document.write('<h2>Calculation History</h2>');
-        
-        for (const calculation of calculationHistory) {
-            historyWindow.document.write(`<p>${calculation}</p>`);
-        }
+    const historyModal = document.getElementById("historyModal");
+    const historyContent = document.getElementById("historyContent");
 
-        historyWindow.onbeforeunload = function() {
-            historyWindowOpen = false;
-        };
+    historyContent.innerHTML = ""; // Clear the content before populating
+
+    for (const calculation of calculationHistory) {
+        historyContent.innerHTML += `<p>${calculation}</p>`;
     }
-}
 
+    historyModal.style.display = "block";
+
+    const closeButton = document.querySelector(".close");
+    closeButton.addEventListener("click", () => {
+        historyModal.style.display = "none";
+    });
+}
 
 window.addEventListener('beforeunload', function() {
     historyWindowOpen = false;
