@@ -2,6 +2,8 @@ let firstnumber = 0;
 let secondnumber = 0;
 let operator = null;
 let displayValue = "0";
+let previousOperation = '';
+
 
 const add = (a, b) => a + b;
 const subtract = (a, b) => a - b;
@@ -44,23 +46,26 @@ clear.addEventListener("click", function() { // Clear the display text when the 
     operator = null;
     displayValue = "0";
     document.getElementById("displaytext").textContent = "0";
+    document.getElementById("upperdisplaytext").textContent = "";
 })
 
-document.querySelectorAll(".operators").forEach(operatorButton => { // Check if any operator is clicked before or not, operate according to that
+document.querySelectorAll(".operators").forEach(operatorButton => {
     operatorButton.addEventListener("click", function() {
         if (operator !== null) {
             secondnumber = parseFloat(displayValue);
             firstnumber = operate(operator, firstnumber, secondnumber);
             displayValue = String(firstnumber);
+            document.getElementById("upperdisplaytext").textContent = previousOperation + " " + secondnumber;
         } else {
             firstnumber = parseFloat(displayValue);
         }
-
         operator = this.textContent;
         displayValue = "0";
-        document.getElementById("displaytext").textContent = "";
+        document.getElementById("displaytext").textContent = "0";
+        previousOperation = firstnumber + " " + operator;
     });
 });
+
 
 const equalButton = document.getElementById("equalbutton");
 equalButton.addEventListener("click", function() {
@@ -75,10 +80,12 @@ equalButton.addEventListener("click", function() {
             displayValue = result;
             document.getElementById("displaytext").textContent = displayValue;
         }
-        
+        document.getElementById("upperdisplaytext").textContent = previousOperation + " " + secondnumber;
         operator = null;
+        previousOperation = '';
     }
 });
+
 
 const deleteButton = document.getElementById("delete");
 deleteButton.addEventListener("click", function() {
@@ -89,4 +96,5 @@ deleteButton.addEventListener("click", function() {
     }
     document.getElementById("displaytext").textContent = displayValue;
 });
+
 
