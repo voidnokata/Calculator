@@ -3,6 +3,8 @@ let secondnumber = 0;
 let operator = null;
 let displayValue = "0";
 let previousOperation = '';
+let calculationHistory = [];
+let historyWindowOpen = false;
 
 
 const add = (a, b) => a + b;
@@ -11,19 +13,51 @@ const multiply = (a, b) => a * b;
 const divide = (a, b) => a / b;
 
 function operate(operator, number1, number2) {
+    let result;
+    let calculationString;
+
     if (operator === "+") {
-        return add(number1, number2);
+        result = add(number1, number2);
+        calculationString = `${number1} + ${number2} = ${result}`;
     } else if (operator === "-") {
-        return subtract(number1, number2);
+        result = subtract(number1, number2);
+        calculationString = `${number1} - ${number2} = ${result}`;
     } else if (operator === "*" || operator === "x") {
-        return multiply(number1, number2);
+        result = multiply(number1, number2);
+        calculationString = `${number1} x ${number2} = ${result}`;
     } else if (operator === "/") {
         if (number2 === 0) {
             return "Cannot divide by zero";
         }
-        return divide(number1, number2);
+        result = divide(number1, number2);
+        calculationString = `${number1} / ${number2} = ${result}`;
     }
+
+    calculationHistory.push(calculationString); // Store the calculation
+    return result;
 }
+
+
+const clear = document.getElementById("clear") 
+clear.addEventListener("click", function() { // Clear the display text when the AC button is clicked
+    firstnumber = 0;
+    secondnumber = 0;
+    operator = null;
+    displayValue = "0";
+    document.getElementById("displaytext").textContent = "0";
+    document.getElementById("upperdisplaytext").textContent = "";
+})
+
+const deleteButton = document.getElementById("delete");
+deleteButton.addEventListener("click", function() {
+    if (displayValue.length > 1) {
+        displayValue = displayValue.slice(0, -1);
+    } else {
+        displayValue = "0";
+    }
+    document.getElementById("displaytext").textContent = displayValue;
+});
+
 
 document.querySelectorAll(".digits").forEach(button => { // Change the display text when a button is clicked
     button.addEventListener("click", function() {
@@ -39,15 +73,7 @@ document.querySelectorAll(".digits").forEach(button => { // Change the display t
     });
 });
 
-const clear = document.getElementById("clear") 
-clear.addEventListener("click", function() { // Clear the display text when the AC button is clicked
-    firstnumber = 0;
-    secondnumber = 0;
-    operator = null;
-    displayValue = "0";
-    document.getElementById("displaytext").textContent = "0";
-    document.getElementById("upperdisplaytext").textContent = "";
-})
+
 
 document.querySelectorAll(".operators").forEach(operatorButton => {
     operatorButton.addEventListener("click", function() {
@@ -86,15 +112,29 @@ equalButton.addEventListener("click", function() {
     }
 });
 
+function openHistoryWindow() {
+    if (!historyWindowOpen) {
+        historyWindowOpen = true;
+        const historyWindow = window.open('', 'Calculation History', 'width=400,height=300,scrollbars=yes');
+        historyWindow.document.write('<h2>Calculation History</h2>');
+        
+        for (const calculation of calculationHistory) {
+            historyWindow.document.write(`<p>${calculation}</p>`);
+        }
 
-const deleteButton = document.getElementById("delete");
-deleteButton.addEventListener("click", function() {
-    if (displayValue.length > 1) {
-        displayValue = displayValue.slice(0, -1);
-    } else {
-        displayValue = "0";
+        historyWindow.onbeforeunload = function() {
+            historyWindowOpen = false;
+        };
     }
-    document.getElementById("displaytext").textContent = displayValue;
+}
+
+
+window.addEventListener('beforeunload', function() {
+    historyWindowOpen = false;
 });
+
+
+const historyButton = document.getElementById("history");
+historyButton.addEventListener("click", openHistoryWindow);
 
 
